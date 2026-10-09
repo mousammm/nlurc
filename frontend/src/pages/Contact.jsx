@@ -16,7 +16,6 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
@@ -51,8 +50,8 @@ const Contact = () => {
     'w-full bg-gray-950 border border-gray-900 focus:border-red-950 rounded-lg px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:ring-1 focus:ring-red-950/60 transition-colors';
 
   return (
-    <div className="bg-black text-white">
-      {/* ================= HERO ================= */}
+    <div className="bg-black text-white min-h-screen">
+      {/* HERO */}
       <section className="relative py-20 border-b border-red-950/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-5xl md:text-6xl font-black mt-4 mb-6 leading-tight">
@@ -65,20 +64,16 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* ================= CONTACT CONTENT ================= */}
+      {/* CONTACT CONTENT */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-5 gap-12">
-            {/* Left: Info */}
+            {/* Info */}
             <div className="md:col-span-2">
               <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
-
               <div className="space-y-6">
                 {contactInfo.map((item, i) => (
-                  <div
-                    key={i}
-                    className="border-l-2 border-red-950/80 pl-4"
-                  >
+                  <div key={i} className="border-l-2 border-red-950/80 pl-4">
                     <div className="text-xs font-semibold tracking-[0.2em] text-red-400 uppercase mb-1">
                       {item.label}
                     </div>
@@ -99,7 +94,7 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Right: Form */}
+            {/* Form */}
             <div className="md:col-span-3">
               <div className="bg-gradient-to-b from-gray-950 to-black border border-gray-900 rounded-2xl p-6 sm:p-8">
                 {submitted ? (
@@ -130,7 +125,6 @@ const Contact = () => {
                         placeholder="Your full name"
                       />
                     </div>
-
                     <div>
                       <label className="block text-xs font-semibold tracking-[0.15em] text-gray-500 uppercase mb-2">
                         Email
@@ -145,7 +139,6 @@ const Contact = () => {
                         placeholder="you@example.com"
                       />
                     </div>
-
                     <div>
                       <label className="block text-xs font-semibold tracking-[0.15em] text-gray-500 uppercase mb-2">
                         Department
@@ -159,7 +152,6 @@ const Contact = () => {
                         placeholder="e.g. CSE, ECE, EE"
                       />
                     </div>
-
                     <div>
                       <label className="block text-xs font-semibold tracking-[0.15em] text-gray-500 uppercase mb-2">
                         Message
@@ -174,7 +166,6 @@ const Contact = () => {
                         placeholder="Tell us what's on your mind..."
                       />
                     </div>
-
                     <button
                       type="submit"
                       className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-lg transition-colors"
@@ -185,6 +176,31 @@ const Contact = () => {
                 )}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MAP */}
+      <section className="py-20 border-t border-red-950/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold mt-3">
+              Visit <span className="text-red-400">Us</span>
+            </h2>
+          </div>
+
+          <div className="relative rounded-2xl overflow-hidden border border-gray-900">
+            <iframe
+              title="North Lakhimpur University Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3547.6181953000446!2d94.09367759999999!3d27.231134599999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3741378d251c7e7b%3A0x2de99dd392996116!2sPhytronix!5e0!3m2!1sen!2sin!4v1790939996648!5m2!1sen!2sin"
+              width="100%"
+              height="450"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="grayscale-[60%] opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+            ></iframe>
           </div>
         </div>
       </section>
