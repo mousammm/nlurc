@@ -8,19 +8,49 @@ const Contact = () => {
     department: '',
     message: '',
   });
-  const [submitted, setSubmitted] = useState(false);
+
+  const [status, setStatus] = useState({
+    submitted: false,
+    loading: false,
+    error: null,
+  });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  // Formspree submit handler
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', department: '', message: '' });
-    }, 4000);
+    setStatus({ submitted: false, loading: true, error: null });
+
+    try {
+      const response = await fetch('https://formspree.io/f/xnpnkqnq', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus({ submitted: true, loading: false, error: null });
+        setFormData({ name: '', email: '', department: '', message: '' });
+
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setStatus({ submitted: false, loading: false, error: null });
+        }, 5000);
+      } else {
+        const data = await response.json();
+        throw new Error(
+          data.error || 'Something went wrong. Please try again.'
+        );
+      }
+    } catch (err) {
+      setStatus({ submitted: false, loading: false, error: err.message });
+    }
   };
 
   const contactInfo = [
@@ -51,7 +81,7 @@ const Contact = () => {
 
   return (
     <div className="bg-black text-white min-h-screen">
-      {/* HERO */}
+      {/* ================= HERO ================= */}
       <section className="relative py-20 border-b border-red-950/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-5xl md:text-6xl font-black mt-4 mb-6 leading-tight">
@@ -64,13 +94,14 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* CONTACT CONTENT */}
+      {/* ================= CONTACT CONTENT ================= */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-5 gap-12">
-            {/* Info */}
+            {/* Left: Info */}
             <div className="md:col-span-2">
               <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
+
               <div className="space-y-6">
                 {contactInfo.map((item, i) => (
                   <div key={i} className="border-l-2 border-red-950/80 pl-4">
@@ -94,10 +125,10 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Form */}
+            {/* Right: Form */}
             <div className="md:col-span-3">
               <div className="bg-gradient-to-b from-gray-950 to-black border border-gray-900 rounded-2xl p-6 sm:p-8">
-                {submitted ? (
+                {status.submitted ? (
                   <div className="text-center py-16">
                     <div className="text-xs font-semibold tracking-[0.3em] text-red-400 uppercase mb-4">
                       Message Sent
@@ -111,6 +142,12 @@ const Contact = () => {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-5">
+                    {status.error && (
+                      <div className="text-xs text-red-400 bg-red-950/20 border border-red-950/60 rounded-lg px-3 py-2">
+                        {status.error}
+                      </div>
+                    )}
+
                     <div>
                       <label className="block text-xs font-semibold tracking-[0.15em] text-gray-500 uppercase mb-2">
                         Name
@@ -125,6 +162,7 @@ const Contact = () => {
                         placeholder="Your full name"
                       />
                     </div>
+
                     <div>
                       <label className="block text-xs font-semibold tracking-[0.15em] text-gray-500 uppercase mb-2">
                         Email
@@ -139,6 +177,7 @@ const Contact = () => {
                         placeholder="you@example.com"
                       />
                     </div>
+
                     <div>
                       <label className="block text-xs font-semibold tracking-[0.15em] text-gray-500 uppercase mb-2">
                         Department
@@ -152,6 +191,7 @@ const Contact = () => {
                         placeholder="e.g. CSE, ECE, EE"
                       />
                     </div>
+
                     <div>
                       <label className="block text-xs font-semibold tracking-[0.15em] text-gray-500 uppercase mb-2">
                         Message
@@ -166,11 +206,13 @@ const Contact = () => {
                         placeholder="Tell us what's on your mind..."
                       />
                     </div>
+
                     <button
                       type="submit"
-                      className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-lg transition-colors"
+                      disabled={status.loading}
+                      className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      Send Message
+                      {status.loading ? 'Sending...' : 'Send Message'}
                     </button>
                   </form>
                 )}
@@ -180,12 +222,12 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* MAP */}
+      {/* ================= MAP ================= */}
       <section className="py-20 border-t border-red-950/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <h2 className="text-3xl md:text-4xl font-bold mt-3">
-              Visit <span className="text-red-400">Us</span>
+              Where We <span className="text-red-400">Are</span>
             </h2>
           </div>
 
