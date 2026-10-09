@@ -81,9 +81,6 @@ const JoinClubModal = ({ open, onClose }) => {
         className="bg-gradient-to-b from-gray-950 to-black border border-red-950/60 rounded-2xl max-w-md w-full p-6 sm:p-8 space-y-5 my-8"
       >
         <div>
-          <span className="text-xs font-semibold tracking-[0.3em] text-red-400 uppercase">
-            Join NLURC
-          </span>
           <h3 className="text-2xl font-bold text-white mt-2">
             Become a member
           </h3>
