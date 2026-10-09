@@ -1,6 +1,7 @@
 // src/pages/Home.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import JoinClubModal from '../components/JoinClubModal';
 
 const Home = () => {
   // Background carousel images
@@ -13,6 +14,9 @@ const Home = () => {
   ];
 
   const [currentImage, setCurrentImage] = useState(0);
+
+  // 👇 Join modal state
+  const [joinOpen, setJoinOpen] = useState(false);
 
   // Auto-rotate carousel every 5 seconds
   useEffect(() => {
@@ -124,12 +128,14 @@ const Home = () => {
             >
               View Achievements
             </Link>
-            <Link
-              to="/contact"
+
+            {/* 👇 Changed from Link to button — opens the modal */}
+            <button
+              onClick={() => setJoinOpen(true)}
               className="px-8 py-3.5 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-red-500/50 text-white font-semibold rounded-lg backdrop-blur-sm transition-all duration-300 hover:scale-105"
             >
               Join the Club
-            </Link>
+            </button>
           </div>
 
           <div className="flex justify-center gap-2 mt-14">
@@ -166,7 +172,6 @@ const Home = () => {
                 key={i}
                 className="group bg-gradient-to-b from-gray-950 to-black border border-gray-900 hover:border-red-950/80 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1"
               >
-                {/* Date + Tag */}
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-baseline gap-2">
                     <span className="text-3xl font-black text-white leading-none">
@@ -181,12 +186,10 @@ const Home = () => {
                   </span>
                 </div>
 
-                {/* Title */}
                 <h3 className="text-xl font-bold text-white mb-4 leading-snug group-hover:text-red-50 transition-colors">
                   {event.title}
                 </h3>
 
-                {/* Details */}
                 <div className="space-y-2 text-sm text-gray-500">
                   <div className="flex items-center gap-2">
                     <span className="w-1 h-1 rounded-full bg-red-400"></span>
@@ -274,7 +277,6 @@ const Home = () => {
       <section className="py-20 border-t border-red-950/40">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative bg-gradient-to-br from-gray-950 via-black to-red-950/20 border border-red-950/60 rounded-2xl p-10 sm:p-16 text-center overflow-hidden">
-            {/* Subtle red glow */}
             <div className="absolute -top-24 -right-24 w-72 h-72 bg-red-600/10 rounded-full blur-3xl"></div>
             <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-red-900/10 rounded-full blur-3xl"></div>
 
@@ -306,6 +308,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Join Club Modal — renders at root level so it overlays everything */}
+      <JoinClubModal open={joinOpen} onClose={() => setJoinOpen(false)} />
     </div>
   );
 };
