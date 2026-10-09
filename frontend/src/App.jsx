@@ -12,7 +12,7 @@ import Contact from './pages/Contact';
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-gray-50 flex flex-col">
+      <div className="min-h-screen bg-black flex flex-col">
         <Navbar />
         {/* pt-16 to offset the fixed navbar height */}
         <main className="pt-16 flex-1">
