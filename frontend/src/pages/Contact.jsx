@@ -130,9 +130,6 @@ const Contact = () => {
               <div className="bg-gradient-to-b from-gray-950 to-black border border-gray-900 rounded-2xl p-6 sm:p-8">
                 {status.submitted ? (
                   <div className="text-center py-16">
-                    <div className="text-xs font-semibold tracking-[0.3em] text-red-400 uppercase mb-4">
-                      Message Sent
-                    </div>
                     <h3 className="text-2xl font-bold text-white mb-3">
                       Thank you!
                     </h3>
