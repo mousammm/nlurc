@@ -1,4 +1,3 @@
-// src/components/JoinClubModal.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -26,10 +25,8 @@ const JoinClubModal = ({ open, onClose }) => {
     setLoading(true);
 
     try {
-      // 1. Create order on backend
       const { data } = await axios.post(`${API_URL}/api/create-order`, form);
 
-      // 2. Open Razorpay Checkout
       const options = {
         key: data.keyId,
         amount: data.amount,
@@ -42,16 +39,15 @@ const JoinClubModal = ({ open, onClose }) => {
           email: form.email,
           contact: form.phone,
         },
-        theme: { color: '#dc2626' }, // red-600 to match your site
+        theme: { color: '#dc2626' },
         handler: async (response) => {
-          // 3. Verify on backend
           try {
             const verify = await axios.post(
               `${API_URL}/api/verify-payment`,
               response
             );
             if (verify.data.success) {
-              alert('Welcome to NLURC! 🎉 Payment ID: ' + response.razorpay_payment_id);
+              alert('Welcome to NLURC! Payment ID: ' + response.razorpay_payment_id);
               onClose();
               setForm({ name: '', email: '', phone: '', department: '' });
             }
@@ -85,7 +81,7 @@ const JoinClubModal = ({ open, onClose }) => {
             Become a member
           </h3>
           <p className="text-xs text-gray-500 mt-1">
-            Membership fee: ₹200 (one-time)
+            Membership fee: ₹300 (one-time)
           </p>
         </div>
 
@@ -169,7 +165,7 @@ const JoinClubModal = ({ open, onClose }) => {
             disabled={loading}
             className="px-4 py-2 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors disabled:opacity-50"
           >
-            {loading ? 'Processing...' : 'Pay ₹200 & Join'}
+            {loading ? 'Processing...' : 'Pay ₹300 & Join'}
           </button>
         </div>
       </form>

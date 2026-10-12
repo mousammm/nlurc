@@ -1,16 +1,18 @@
-// src/pages/Team.jsx
 import React from 'react';
 
 const Team = () => {
   const team = [
-    { name: 'Dr. Ratan Das', role: 'Faculty Advisor', dept: 'Dept. of ECE' },
-    { name: 'Aryanya Kashyap', role: 'President', dept: 'Final Year, ECE' },
-    { name: 'Himshikhar Gogoi', role: 'Vice President', dept: 'Final Year, ECE' },
-    { name: 'Dikshita Chakraborty', role: 'Behaviour Analytics', dept: 'Third Year, ECS' },
-    { name: 'Jyutisman Hazirika', role: 'Event Coordinator', dept: 'First Year, EE' },
-    { name: 'Rituraj Bhuyan', role: 'Treasurer', dept: 'First Year, CSC' },
-    { name: 'Chinmoy Saikia', role: 'Marketing Lead', dept: 'First Year, CSE' },
-    { name: 'Chinmoy Gogoi', role: 'Marketing Junior', dept: 'First Year, CSE' },
+    { name: 'Name Title', role: 'Faculty Advisor', dept: 'Dept. of ECE' },
+    { name: 'Name Title', role: 'President', dept: 'Final Year, ECE' },
+    { name: 'Name Title', role: 'Vice President', dept: 'Final Year, ECE' },
+    { name: 'Name Title', role: 'Behaviour Analytics', dept: 'Third Year, ECS' },
+    { name: 'Name Title', role: 'Event Coordinator', dept: 'First Year, ESC' },
+    { name: 'Name Title', role: 'Treasurer', dept: 'First Year, CSC' },
+    { name: 'Name Title', role: 'Marketing Lead', dept: 'First Year, CSE' },
+    { name: 'Name Title', role: 'Member', dept: 'First Year, CSE' },
+    { name: 'Name Title', role: 'Member', dept: 'First Year, Zoology' },
+    { name: 'Name Title', role: 'Member', dept: 'First Year, Physics' },
+    { name: 'Name Title', role: 'Member', dept: 'First Year, Maths' },
   ];
 
   // Helper to get initials from a name

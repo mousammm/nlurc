@@ -1,37 +1,36 @@
-// src/pages/Achievements.jsx
 import React from 'react';
 
 const Achievements = () => {
   const achievements = [
     {
       year: '2024',
-      title: 'National Robotics Championship — Winner',
-      desc: 'First place at the National Robotics Championship held at IIT Guwahati, competing against 40+ teams from across India.',
-    },
-    {
-      year: '2024',
-      title: 'Best Innovation Award',
-      desc: 'Recognized for our autonomous disaster-response robot at TechFest, IIT Bombay.',
+      title: 'This is a title!',
+      desc: 'lorem ipsum dolor sit amet consectetur adipiscing elit sed voluptatum et qui optio distinctio minim proident do quo dolorum veniam excepturi',
     },
     {
       year: '2023',
-      title: 'Inter-University Robo War — Runner-up',
-      desc: 'Second place in the regional Robo War competition held at NIT Silchar.',
+      title: 'This is a title!',
+      desc: 'lorem ipsum dolor sit amet consectetur adipiscing elit sed voluptatum et qui optio distinctio minim proident do quo dolorum veniam excepturi',
     },
     {
       year: '2023',
-      title: 'Research Paper Published',
-      desc: 'Our paper on "AI-based Path Planning for Autonomous Robots" was published at an IEEE conference.',
+      title: 'This is a title!',
+      desc: 'lorem ipsum dolor sit amet consectetur adipiscing elit sed voluptatum et qui optio distinctio minim proident do quo dolorum veniam excepturi',
     },
     {
       year: '2022',
-      title: 'Best Student Club Award',
-      desc: 'Awarded by North Lakhimpur University for outstanding contribution to student innovation.',
+      title: 'This is a title!',
+      desc: 'lorem ipsum dolor sit amet consectetur adipiscing elit sed voluptatum et qui optio distinctio minim proident do quo dolorum veniam excepturi',
     },
     {
       year: '2022',
-      title: 'AICTE-Funded Project',
-      desc: 'Received a research grant for our smart agriculture robot project under the AICTE scheme.',
+      title: 'This is a title!',
+      desc: 'lorem ipsum dolor sit amet consectetur adipiscing elit sed voluptatum et qui optio distinctio minim proident do quo dolorum veniam excepturi',
+    },
+    {
+      year: '2022',
+      title: 'This is a title!',
+      desc: 'lorem ipsum dolor sit amet consectetur adipiscing elit sed voluptatum et qui optio distinctio minim proident do quo dolorum veniam excepturi',
     },
   ];
 

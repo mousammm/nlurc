@@ -1,4 +1,3 @@
-// src/pages/Home.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import JoinClubModal from '../components/JoinClubModal';
@@ -15,7 +14,7 @@ const Home = () => {
 
   const [currentImage, setCurrentImage] = useState(0);
 
-  // 👇 Join modal state
+  // Join modal state
   const [joinOpen, setJoinOpen] = useState(false);
 
   // Auto-rotate carousel every 5 seconds
@@ -129,7 +128,6 @@ const Home = () => {
               View Achievements
             </Link>
 
-            {/* 👇 Changed from Link to button — opens the modal */}
             <button
               onClick={() => setJoinOpen(true)}
               className="px-8 py-3.5 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-red-500/50 text-white font-semibold rounded-lg backdrop-blur-sm transition-all duration-300 hover:scale-105"
